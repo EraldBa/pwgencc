@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
          
         repeat = varMap.count(REPEAT_OPT) 
                 ? varMap[REPEAT_OPT].as<uint32_t>() 
-                : 1;
+                : 10;
 
 
     } catch(const std::exception& e) {
