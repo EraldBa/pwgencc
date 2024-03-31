@@ -1,2 +1,7 @@
 *.o
+.vscode
 pwgencc
+CMakeFiles
+CMakeCache.txt
+Makefile
+cmake_install.cmake

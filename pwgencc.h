@@ -1,14 +1,14 @@
 #pragma once
 
 #include <string>
-#include <vector>
+#include <cstdint>
 
 namespace pwgencc {
     struct PwOpts {
-        bool useLowerCase { true };
-        bool useUpperCase { true };
-        bool useNumbers { true };
-        bool useSymbols { true };
+        bool useLowerCase   {true};
+        bool useUpperCase   {true};
+        bool useNumbers     {true};
+        bool useSymbols     {true};
     };
 
     class Generator {
