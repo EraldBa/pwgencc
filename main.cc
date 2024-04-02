@@ -1,5 +1,6 @@
-#include <iostream>
+#include <cstdint>
 #include <exception>
+#include <iostream>
 #include <boost/program_options.hpp>
 
 #include "pwgencc.h"
@@ -27,7 +28,6 @@ int main(int argc, char *argv[]) {
         (EXCLUDE_LOWER_OPT,     "Exclude lowercase characters")
         (EXCLUDE_NUMBERS_OPT,   "Exclude numbers")
         (EXCLUDE_SYMBOLS_OPT,   "Exclude symbols")
-
         (PWLEN_OPT,     propts::value<uint32_t>(),  "Length of random password")
         (REPEAT_OPT,    propts::value<uint32_t>(),  "How many passwords to generate");
 
@@ -37,26 +37,15 @@ int main(int argc, char *argv[]) {
 
         propts::notify(varMap);
 
-        if (varMap.count(HELP_OPT)) {
+        if (varMap.contains(HELP_OPT)) {
             std::cout << desc << std::endl;
             return 0;
         }
 
-        if (varMap.count(EXCLUDE_UPPER_OPT)) {
-            pwOpts.useUpperCase = false;
-        }
-
-        if (varMap.count(EXCLUDE_LOWER_OPT)) {
-            pwOpts.useLowerCase = false;
-        }
-
-        if (varMap.count(EXCLUDE_NUMBERS_OPT)) {
-            pwOpts.useNumbers = false;
-        }
-
-        if (varMap.count(EXCLUDE_SYMBOLS_OPT)) {
-            pwOpts.useSymbols = false;
-        }
+        pwOpts.useUpperCase = !varMap.contains(EXCLUDE_UPPER_OPT);
+        pwOpts.useLowerCase = !varMap.contains(EXCLUDE_LOWER_OPT);
+        pwOpts.useNumbers = !varMap.contains(EXCLUDE_NUMBERS_OPT);
+        pwOpts.useSymbols = !varMap.contains(EXCLUDE_SYMBOLS_OPT);
 
         
         pwLen = varMap.count(PWLEN_OPT) 

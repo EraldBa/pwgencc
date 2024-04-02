@@ -1,11 +1,12 @@
 #include <cstdint>
+#include <string>
 #include <boost/random/random_device.hpp>
 #include <boost/random/uniform_int_distribution.hpp>
 
 #include "pwgencc.h"
 
 pwgencc::Generator::Generator(uint32_t pwlen, const PwOpts& pwOpts)
-      : pwLen(pwlen) {
+    : pwLen(pwlen) {
     if (pwOpts.useLowerCase) {
         this->seed += "abcdefghijklmnopqrstuvwxyz";
     }
@@ -23,7 +24,7 @@ pwgencc::Generator::Generator(uint32_t pwlen, const PwOpts& pwOpts)
     }
 }
 
-std::string pwgencc::Generator::generate() const noexcept { 
+std::string pwgencc::Generator::generate() const noexcept {
     const size_t seedLen = this->seed.length();
     if (seedLen == 0) {
         return "";
@@ -42,7 +43,7 @@ std::string pwgencc::Generator::generate() const noexcept {
 
         do {
             randChar = this->seed[dis(randomDevice)];
-        } while (useUniqueChars && password.find(randChar) != std::string::npos);
+        } while (useUniqueChars && password.contains(randChar));
 
         password += randChar;
     }
