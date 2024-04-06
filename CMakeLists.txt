@@ -11,7 +11,7 @@ endif()
 
 set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-set (CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 23)
 
-add_executable(pwgencc main.cc pwgencc.cc)
+add_executable(pwgencc main.cc pwgen.cc)
 target_link_libraries(pwgencc ${Boost_LIBRARIES})

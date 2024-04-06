@@ -1,5 +1,6 @@
 *.o
 .vscode
+build
 pwgencc
 CMakeFiles
 CMakeCache.txt

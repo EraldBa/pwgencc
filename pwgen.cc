@@ -3,7 +3,7 @@
 #include <boost/random/random_device.hpp>
 #include <boost/random/uniform_int_distribution.hpp>
 
-#include "pwgencc.h"
+#include "pwgen.h"
 
 pwgencc::Generator::Generator(uint32_t pwlen, const PwOpts& pwOpts)
     : pwLen(pwlen) {

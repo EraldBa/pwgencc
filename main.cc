@@ -3,7 +3,7 @@
 #include <iostream>
 #include <boost/program_options.hpp>
 
-#include "pwgencc.h"
+#include "pwgen.h"
 
 namespace propts = boost::program_options;
     
@@ -36,6 +36,8 @@ int main(int argc, char *argv[]) {
         propts::store(propts::parse_command_line(argc, argv, desc), varMap);
 
         propts::notify(varMap);
+
+        boost::any(0);
 
         if (varMap.contains(HELP_OPT)) {
             std::cout << desc << std::endl;
